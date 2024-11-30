@@ -16,7 +16,7 @@ def dijkstra(grafo, inicio):
         for vizinho, peso in grafo[nodo_atual]:
             distancia = distancia_atual + peso
 
-            if distancia > distancias[vizinho]:  
+            if distancia < distancias[vizinho]:
                 distancias[vizinho] = distancia
                 heappush(heap, (distancia, vizinho))
 
