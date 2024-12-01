@@ -1,6 +1,6 @@
 from heapq import heappush, heappop
 
-def dijkstra(grafo, inicio):
+def dijkstra(grafo, inicio, fim):
     distancias = {nodo: float('inf') for nodo in grafo}
     distancias[inicio] = 0
     custos = {nodo: 0 for nodo in grafo}  
@@ -10,6 +10,9 @@ def dijkstra(grafo, inicio):
 
     while heap:
         distancia_atual, nodo_atual, custo_atual = heappop(heap)
+
+        if nodo_atual == fim:
+            return distancias[fim], custo_atual
 
         if distancia_atual > distancias[nodo_atual]:
             continue
@@ -23,7 +26,7 @@ def dijkstra(grafo, inicio):
                 custos[vizinho] = custo
                 heappush(heap, (distancia, vizinho, custo))
 
-    return distancias, custos
+    return float('inf'), float('inf')
 
 grafo = {
     'A': [('B', 1, 5), ('C', 4, 10)], 
@@ -32,11 +35,12 @@ grafo = {
     'D': [('B', 5, 7), ('C', 1, 2)]
 }
 
-distancias, custos = dijkstra(grafo, 'A')
 
-print("distancia:", distancias)
-print("custo acumulados:", custos)
+inicio = 'A'
+fim = 'D'
 
-preco_total = sum(custos.values())
-print("preco total:", preco_total)
+menor_distancia, preco_total = dijkstra(grafo, inicio, fim)
+
+print(f"Menor distância de {inicio} para {fim}: {menor_distancia}")
+print(f"Preço total das arestas percorridas: {preco_total}")
 
