@@ -1,50 +1,34 @@
 import heapq
-
 class Solution:
-    def minCost(self, grid):
+    def minCost(self, grid: List[List[int]]) -> int:
+
         m, n = len(grid), len(grid[0])
 
-        direções = [(0, 1), (0, -1), (1, 0), (-1, 0)] 
-
-        heap = [(0, 0, 0)]  # (custo, x, y)
-
+        direções = [(0, 1), (0, -1), (1, 0), (-1, 0)]  
+        # (custo, linha, coluna)
+        heap = [(0, 0, 0)]  
         # Matriz custo minimo 
         custo_minimo = [[float('inf')] * n for _ in range(m)]
-        custo_minimo[0][0] = 0  
-        passos = []  
-
-        def print_custo_minimo(): 
-            print("Matriz de custo mínimo:")
-            for linha in custo_minimo:
-                print(linha)
-            print()
+        custo_minimo[0][0] = 0
 
         while heap:
-            custo, x, y = heapq.heappop(heap)  
-            passos.append(f"Desenfileira: custo={custo}, x={x}, y={y}")
+            custo, x, y = heapq.heappop(heap)
+
+            if x == m - 1 and y == n - 1:
+                return custo
 
             if custo > custo_minimo[x][y]:
-                passos.append(f"Ignorado: custo={custo} > custo_minimo={custo_minimo[x][y]}")
                 continue
 
             for i, (dx, dy) in enumerate(direções):
-                nx, ny = x + dx, y + dy
+                nx, ny = x + dx, y + dy 
 
-                #limites matriz
-                if 0 <= nx < m and 0 <= ny < n:
+                 # verifica se esta na matriz 
+                if 0 <= nx < m and 0 <= ny < n: 
+                  
                     novo_custo = custo + (1 if grid[x][y] != i + 1 else 0)
                     if novo_custo < custo_minimo[nx][ny]:
                         custo_minimo[nx][ny] = novo_custo
                         heapq.heappush(heap, (novo_custo, nx, ny))
-                        passos.append(f"Pushed: custo={novo_custo}, x={nx}, y={ny}")
-                        print_custo_minimo()  
 
-        for passo in passos:
-            print(passo)
-
-        return custo_minimo
-
-if __name__ == "__main__":
-    solution = Solution()
-    grid = [[1,1,3],[3,2,2],[1,1,4]]  
-    solution.minCost(grid)
+        return -1

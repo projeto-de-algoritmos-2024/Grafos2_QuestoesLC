@@ -31,6 +31,8 @@ O código pode ser executado em algum compilador online de python para teste.
 ### 1584. Min Cost to Connect all points
 ![1584_print](/1584.Min%20Cost%20To%20Connect%20all%20Points/1584Points.jpeg)
 
+### 1368.Minimun Cost to Make at Least One Valid Path in a grid
+![1368_print](/1368.Minimun%20Cost%20to%20Make%20at%20Least%20One%20Valid%20Path%20in%20a%20Grid/1368Matriz.jpeg)
 
 ## Uso 
 Para executar acesse o link da questão no site leetcode com sua conta e copie o arquivo ou seu conteúdo, em seguida envie a questão para ser avaliada pelo juiz online.
