@@ -34,12 +34,3 @@ class Solution:
 
         return resultado if resultado != float('inf') else -1
 
-n = 4  
-flights = [[0, 1, 100], [1, 2, 100], [2, 3, 100], [0, 2, 500]]  
-src = 1  
-dst = 3 
-k = 1  
-
-sol = Solution()
-result = sol.findCheapestPrice(n, flights, src, dst, k)
-print(result)  
