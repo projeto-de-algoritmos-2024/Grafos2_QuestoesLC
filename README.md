@@ -24,6 +24,13 @@ O código pode ser executado em algum compilador online de python para teste.
 |Nível|Link|
 |:---:|:--:|
 |Médio|[1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/description/)|
+|Difícil|[1368. Minimun Cost to Make at Least One Valid Path in a grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/description/)|
+
+
+## Screenshots
+### 1584. Min Cost to Connect all points
+![1584_print](1584.Min%20Cost%20To%20Connect%20all%20Points/1584.jpeg)
+
 
 ## Uso 
 Para executar acesse o link da questão no site leetcode com sua conta e copie o arquivo ou seu conteúdo, em seguida envie a questão para ser avaliada pelo juiz online.
