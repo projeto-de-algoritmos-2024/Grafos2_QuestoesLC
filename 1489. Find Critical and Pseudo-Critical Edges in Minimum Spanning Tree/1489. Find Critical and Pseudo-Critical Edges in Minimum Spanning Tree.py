@@ -2,7 +2,7 @@ from typing import List
 import heapq
 
 class Solution:
-    def encontrarArestasCriticasEPseudoCriticas(self, n_nos: int, arestas: List[List[int]]) -> List[List[int]]:
+    def findCriticalAndPseudoCriticalEdges(self, n_nos: int, arestas: List[List[int]]) -> List[List[int]]:
         for indice, aresta in enumerate(arestas):
             aresta.append(indice)
         
@@ -66,6 +66,6 @@ solucao = Solution()
 n_nos = 5
 arestas = [[0, 1, 1], [1, 2, 1], [2, 3, 2], [0, 3, 2], [0, 4, 3], [3, 4, 3], [1, 4, 6]]
 
-resultado = solucao.encontrarArestasCriticasEPseudoCriticas(n_nos, arestas)
+resultado = solucao.findCriticalAndPseudoCriticalEdges(n_nos, arestas)
 print("criticas:", resultado[0])
 print("pseudo:", resultado[1])
