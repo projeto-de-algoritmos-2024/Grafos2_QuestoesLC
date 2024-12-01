@@ -1,50 +1,42 @@
 from heapq import heappush, heappop
+from typing import List
 
-def dijkstra_k(grafo, inicio, fim, k):
-    distancias = {nodo: float('inf') for nodo in grafo}
-    distancias[inicio] = 0
-    custos = {nodo: 0 for nodo in grafo}
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        grafo = {i: [] for i in range(n)}
+        for u, v, preco in flights:
+            grafo[u].append((v, 1, preco)) 
+        
+        distancias = {nodo: float('inf') for nodo in range(n)}
+        distancias[src] = 0
 
-    heap = []
-    heappush(heap, (0, inicio, 0, -1)) 
+        heap = []
+        heappush(heap, (0, src, 0, -1)) 
 
-    while heap:
-        distancia_atual, nodo_atual, custo_atual, nos_intermediarios = heappop(heap)
+        while heap:
+            custo_atual, nodo_atual, distancia_atual, paradas = heappop(heap)
 
-        if nodo_atual == fim and nos_intermediarios == k:
-            return distancias[fim], custo_atual
+            if nodo_atual == dst and paradas <= k:
+                return custo_atual
 
-        if distancia_atual > distancias[nodo_atual]:
-            continue
+            if paradas >= k:
+                continue
 
-        for vizinho, peso, preco in grafo[nodo_atual]:
-            distancia = distancia_atual + peso
-            custo = custo_atual + preco
-            novo_nos_intermediarios = nos_intermediarios + 1 if vizinho != fim else nos_intermediarios
+            for vizinho, peso, preco in grafo[nodo_atual]:
+                distancia = distancia_atual + peso
+                custo = custo_atual + preco
 
-            if distancia < distancias[vizinho]:
-                distancias[vizinho] = distancia
-                custos[vizinho] = custo
-                heappush(heap, (distancia, vizinho, custo, novo_nos_intermediarios))
+                if distancia <= k + 1:  
+                    heappush(heap, (custo, vizinho, distancia, paradas + 1))
 
-    return float('inf'), float('inf')  
+        return -1
 
-grafo = {
-    'A': [('B', 1, 5), ('C', 4, 10)], 
-    'B': [('A', 1, 5), ('C', 2, 3), ('D', 5, 7)],
-    'C': [('A', 4, 10), ('B', 2, 3), ('D', 1, 2)],
-    'D': [('B', 5, 7), ('C', 1, 2)]
-}
-
-inicio = 'A'
-fim = 'D'
+n = 4  
+flights = [[0, 1, 100], [1, 2, 100], [2, 3, 100], [0, 2, 500]]  
+src = 1  
+dst = 3 
 k = 1  
 
-menor_distancia, preco_total = dijkstra_k(grafo, inicio, fim, k)
-
-if menor_distancia == float('inf'):
-    print(f"Não existe caminho de {inicio} para {fim} que passe por exatamente {k} nós intermediários.")
-else:
-    print(f"Menor distância de {inicio} para {fim} passando por {k} nós intermediários: {menor_distancia}")
-    print(f"Preço total das arestas percorridas: {preco_total}")
-
+sol = Solution()
+result = sol.findCheapestPrice(n, flights, src, dst, k)
+print(result)
