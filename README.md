@@ -29,7 +29,7 @@ O código pode ser executado em algum compilador online de python para teste.
 
 ## Screenshots
 ### 1584. Min Cost to Connect all points
-![1584_print](1584.Min%20Cost%20To%20Connect%20all%20Points/1584.jpeg)
+![1584_print](/1584.Min%20Cost%20To%20Connect%20all%20Points/1584Points.jpeg)
 
 
 ## Uso 
