@@ -3,33 +3,36 @@ from typing import List
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+
         grafo = {i: [] for i in range(n)}
         for u, v, preco in flights:
-            grafo[u].append((v, 1, preco)) 
-        
-        distancias = {nodo: float('inf') for nodo in range(n)}
-        distancias[src] = 0
+            grafo[u].append((v, preco))  
+
+        distancias = [[float('inf')] * (k + 2) for _ in range(n)]
+        distancias[src][0] = 0  
 
         heap = []
-        heappush(heap, (0, src, 0, -1)) 
+        heappush(heap, (0, src, 0)) 
 
         while heap:
-            custo_atual, nodo_atual, distancia_atual, paradas = heappop(heap)
+            custo_atual, nodo_atual, paradas = heappop(heap)
 
-            if nodo_atual == dst and paradas <= k:
-                return custo_atual
-
-            if paradas >= k:
+            if paradas > k:
                 continue
 
-            for vizinho, peso, preco in grafo[nodo_atual]:
-                distancia = distancia_atual + peso
-                custo = custo_atual + preco
+            if custo_atual > distancias[nodo_atual][paradas]:
+                continue
 
-                if distancia <= k + 1:  
-                    heappush(heap, (custo, vizinho, distancia, paradas + 1))
+            for vizinho, preco in grafo[nodo_atual]:
+                novo_custo = custo_atual + preco
+               
+                if novo_custo < distancias[vizinho][paradas + 1]:
+                    distancias[vizinho][paradas + 1] = novo_custo
+                    heappush(heap, (novo_custo, vizinho, paradas + 1))
 
-        return -1
+        resultado = min(distancias[dst][:k + 2])
+
+        return resultado if resultado != float('inf') else -1
 
 n = 4  
 flights = [[0, 1, 100], [1, 2, 100], [2, 3, 100], [0, 2, 500]]  
@@ -39,4 +42,4 @@ k = 1
 
 sol = Solution()
 result = sol.findCheapestPrice(n, flights, src, dst, k)
-print(result)
+print(result)  
