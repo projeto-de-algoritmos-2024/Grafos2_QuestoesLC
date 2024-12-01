@@ -6,12 +6,12 @@ def dijkstra_k(grafo, inicio, fim, k):
     custos = {nodo: 0 for nodo in grafo}
 
     heap = []
-    heappush(heap, (0, inicio, 0, 0)) 
+    heappush(heap, (0, inicio, 0, -1)) 
 
     while heap:
-        distancia_atual, nodo_atual, custo_atual, nos_percorridos = heappop(heap)
+        distancia_atual, nodo_atual, custo_atual, nos_intermediarios = heappop(heap)
 
-        if nodo_atual == fim and nos_percorridos == k:
+        if nodo_atual == fim and nos_intermediarios == k:
             return distancias[fim], custo_atual
 
         if distancia_atual > distancias[nodo_atual]:
@@ -20,12 +20,12 @@ def dijkstra_k(grafo, inicio, fim, k):
         for vizinho, peso, preco in grafo[nodo_atual]:
             distancia = distancia_atual + peso
             custo = custo_atual + preco
-            novo_nos_percorridos = nos_percorridos + 1
+            novo_nos_intermediarios = nos_intermediarios + 1 if vizinho != fim else nos_intermediarios
 
             if distancia < distancias[vizinho]:
                 distancias[vizinho] = distancia
                 custos[vizinho] = custo
-                heappush(heap, (distancia, vizinho, custo, novo_nos_percorridos))
+                heappush(heap, (distancia, vizinho, custo, novo_nos_intermediarios))
 
     return float('inf'), float('inf')  
 
@@ -38,12 +38,13 @@ grafo = {
 
 inicio = 'A'
 fim = 'D'
-k = 3  
+k = 1  
 
 menor_distancia, preco_total = dijkstra_k(grafo, inicio, fim, k)
 
 if menor_distancia == float('inf'):
-    print(f"Não existe caminho de {inicio} para {fim} que passe exatamente por {k} nós.")
+    print(f"Não existe caminho de {inicio} para {fim} que passe por exatamente {k} nós intermediários.")
 else:
-    print(f"Menor distância de {inicio} para {fim} passando por {k} nós: {menor_distancia}")
+    print(f"Menor distância de {inicio} para {fim} passando por {k} nós intermediários: {menor_distancia}")
     print(f"Preço total das arestas percorridas: {preco_total}")
+
