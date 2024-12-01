@@ -62,10 +62,3 @@ class Solution:
         
         return [arestas_criticas, arestas_pseudo_criticas]
 
-solucao = Solution()
-n_nos = 5
-arestas = [[0, 1, 1], [1, 2, 1], [2, 3, 2], [0, 3, 2], [0, 4, 3], [3, 4, 3], [1, 4, 6]]
-
-resultado = solucao.findCriticalAndPseudoCriticalEdges(n_nos, arestas)
-print("criticas:", resultado[0])
-print("pseudo:", resultado[1])
