@@ -17,13 +17,14 @@ Para aplicarmos na prática o conteúdo desenvolvido no segundo módulo da disci
 **Linguagem**: python<br>
 
 O código pode ser executado em algum compilador online de python para teste. 
-É necessário uma conta no site LeetCode.
+É necessário uma conta no site <a href = "https://leetcode.com/" target = "_blank">LeetCode</a>.
 
 ## Exercícios
 
 |Nível|Link|
 |:---:|:--:|
 |Médio|[1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/description/)|
+|Médio|[787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)|
 |Difícil|[1368. Minimun Cost to Make at Least One Valid Path in a grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/description/)|
 
 
@@ -34,10 +35,11 @@ O código pode ser executado em algum compilador online de python para teste.
 ### 1368.Minimun Cost to Make at Least One Valid Path in a grid
 ![1368_print](/1368.Minimun%20Cost%20to%20Make%20at%20Least%20One%20Valid%20Path%20in%20a%20Grid/1368Matriz.jpeg)
 
+### 787. Cheapest Flights Within K Stops
+![questao](https://github.com/user-attachments/assets/1f682bba-5148-45ef-8c6c-8d436b610fea)
+
 ## Uso 
 Para executar acesse o link da questão no site leetcode com sua conta e copie o arquivo ou seu conteúdo, em seguida envie a questão para ser avaliada pelo juiz online.
-
-
 
 
 
