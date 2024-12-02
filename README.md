@@ -41,5 +41,8 @@ O código pode ser executado em algum compilador online de python para teste.
 ## Uso 
 Para executar acesse o link da questão no site leetcode com sua conta e copie o arquivo ou seu conteúdo, em seguida envie a questão para ser avaliada pelo juiz online.
 
+## Link dos vídeos com a explicação
+ <a href = "https://www.youtube.com/watch?v=LBskje54TBs" target = "_blank">1584. Min Cost to Connect all points</a> 
 
+ <a href = "https://www.youtube.com/watch?v=h_EMfy9Gg6g" target = "_blank">1368.Minimun Cost to Make at Least One Valid Path in a grid</a>  
 
