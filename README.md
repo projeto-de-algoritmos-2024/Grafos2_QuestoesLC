@@ -40,8 +40,7 @@ O código pode ser executado em algum compilador online de python para teste.
 ![questao](https://github.com/user-attachments/assets/1f682bba-5148-45ef-8c6c-8d436b610fea)
 
 ### 1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree
-
-![1489](https://github.com/user-attachments/assets/f8a056a4-aab7-46c4-a936-826c24b00665)
+![1489](https://github.com/user-attachments/assets/a44bb948-018e-4c57-8c41-a0828df126a8)
 
 ## Uso 
 Para executar acesse o link da questão no site leetcode com sua conta e copie o arquivo ou seu conteúdo, em seguida envie a questão para ser avaliada pelo juiz online.
